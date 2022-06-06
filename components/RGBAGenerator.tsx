@@ -4,6 +4,7 @@ import { FunctionComponent, useState } from 'react';
 // Libs
 import { IoMdColorFilter } from 'react-icons/io';
 import { MdFileCopy } from 'react-icons/md';
+import { notify } from '../utils/notify';
 
 export const RGBAGenerator: FunctionComponent = () => {
   const [red, setRed] = useState(127);
@@ -12,22 +13,23 @@ export const RGBAGenerator: FunctionComponent = () => {
   const [opacity, setOpacity] = useState(100);
 
   const copyColor = () => {
-    const color = `rgba(${red}, ${green}, ${blue}, ${opacity / 100}`;
+    const color = `rgba(${red}, ${green}, ${blue}, ${opacity / 100})`;
     window.navigator['clipboard'].writeText(color);
+    notify("Copied to clipboard!", "success");
   }
 
   return (
     <>
       <div
         className="
-              flex 
-              flex-col
-              items-center
-              text-white 
-              py-12 px-6 
-              rounded-md
-              mb-6
-              bg-[#44474E]"
+          flex 
+          flex-col
+          items-center
+          text-white 
+          py-12 px-6 
+          rounded-md
+          mb-6
+          bg-[#44474E]"
       >
         <div
           className="

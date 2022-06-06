@@ -8,6 +8,8 @@ import Head from 'next/head'
 // Libs
 import { MdColorLens } from 'react-icons/md';
 import classNames from 'classnames';
+
+// Components
 import { Wrapper } from '../components/Wrapper';
 import { RGBAGenerator } from '../components/RGBAGenerator';
 
