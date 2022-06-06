@@ -13,6 +13,7 @@ const Home: NextPage = () => {
   const [red, setRed] = useState(127);
   const [green, setGreen] = useState(127);
   const [blue, setBlue] = useState(127);
+  const [opacity, setOpacity] = useState(100);
 
   return (
     <>
@@ -119,13 +120,31 @@ const Home: NextPage = () => {
             <div
               className="my-10 sm:p-24 p-16 rounded-full"
               style={{
-                backgroundColor: `rgb(${red}, ${green}, ${blue})`
+                backgroundColor: `rgba(${red}, ${green}, ${blue}, ${opacity / 100})`,
               }}
             />
 
             <p className="text-lg font-medium">
-              rgb({red}, {green}, {blue})
+              rgba({red}, {green}, {blue}, {opacity  / 100})
             </p>
+
+            {/* Opacity bar */}
+            <div
+              className="
+                p-2 mt-6
+                bg-black bg-opacity-10
+                rounded-md"
+            >
+              <input
+                type="range"
+                name="opacity"
+                min="0" max="100"
+                value={opacity}
+                className="cursor-pointer"
+                onChange={(e) => setOpacity(Number((e.target as HTMLInputElement).value))}
+              />
+            </div>
+
           </div>
         </div>
       </main>
