@@ -1,9 +1,19 @@
+// React
+import { useState } from 'react';
+
+// Next
 import type { NextPage } from 'next'
 import Head from 'next/head'
 
+// Libs
 import { IoMdColorFilter } from 'react-icons/io';
+import classNames from 'classnames';
 
 const Home: NextPage = () => {
+  const [red, setRed] = useState(127);
+  const [green, setGreen] = useState(127);
+  const [blue, setBlue] = useState(127);
+
   return (
     <>
       <Head>
@@ -18,15 +28,16 @@ const Home: NextPage = () => {
           items-center justify-center 
           bg-[#363940] 
           min-h-screen 
-          border px-2"
+          px-2 sm:py-10 py-16"
       >
         <div className="w-full max-w-3xl">
           <h1 className="sm:text-5xl text-3xl text-center text-white font-bold mb-6">
             I Want RGB
           </h1>
-          <div 
+          <div
             className="
               flex 
+              sm:flex-row flex-col
               items-center
               text-white 
               py-3 px-6 
@@ -34,20 +45,87 @@ const Home: NextPage = () => {
               mb-6
               bg-[#44474E]"
           >
-            <IoMdColorFilter size={25} className="sm:mr-2" />
+            <IoMdColorFilter size={25} className="sm:mr-2 sm:mb-0 mb-2" />
             <p className="text-lg font-medium">26/08/2022 - 23:59</p>
           </div>
-          <div 
+          <div
             className="
               flex 
+              flex-col
               items-center
               text-white 
-              py-3 px-6 
+              py-12 px-6 
               rounded-md
               mb-6
               bg-[#44474E]"
           >
-            
+            <div
+              className="
+                flex flex-wrap
+                w-full 
+                gap-4 
+                justify-center"
+            >
+              {/* Red bar */}
+              <div
+                className="
+                  p-4
+                  rounded-md
+                  bg-red-400"
+              >
+                <input
+                  type="range"
+                  name="red"
+                  min="0" max="255"
+                  value={red}
+                  className="cursor-pointer"
+                  onChange={(e) => setRed(Number((e.target as HTMLInputElement).value))}
+                />
+              </div>
+              {/* Green bar */}
+              <div
+                className="
+                  p-4
+                  rounded-md
+                  bg-green-400"
+              >
+                <input
+                  type="range"
+                  name="green"
+                  min="0" max="255"
+                  value={green}
+                  className="cursor-pointer"
+                  onChange={(e) => setGreen(Number((e.target as HTMLInputElement).value))}
+                />
+              </div>
+              {/* Blue bar */}
+              <div
+                className="
+                  p-4
+                  rounded-md
+                  bg-blue-400"
+              >
+                <input
+                  type="range"
+                  name="blue"
+                  min="0" max="255"
+                  value={blue}
+                  className="cursor-pointer"
+                  onChange={(e) => setBlue(Number((e.target as HTMLInputElement).value))}
+                />
+              </div>
+            </div>
+
+            <div
+              className="my-10 sm:p-24 p-16 rounded-full"
+              style={{
+                backgroundColor: `rgb(${red}, ${green}, ${blue})`
+              }}
+            />
+
+            <p className="text-lg font-medium">
+              rgb({red}, {green}, {blue})
+            </p>
           </div>
         </div>
       </main>
