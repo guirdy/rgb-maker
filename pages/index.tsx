@@ -6,12 +6,13 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 
 // Libs
-import { MdColorLens } from 'react-icons/md';
 import classNames from 'classnames';
 
 // Components
 import { Wrapper } from '../components/Wrapper';
 import { RGBAGenerator } from '../components/RGBAGenerator';
+import { CurrentDate } from '../components/CurrentDate';
+import { getFullYear } from '../utils/format';
 
 const Home: NextPage = () => {
   return (
@@ -29,25 +30,16 @@ const Home: NextPage = () => {
           bg-[#363940] 
           min-h-screen 
           px-2 sm:py-10 py-16"
+        style={{
+          background: "url(galaxy.jpg) no-repeat",
+          backgroundSize: "cover",
+        }}
       >
         <Wrapper>
           <h1 className="sm:text-5xl text-3xl text-center text-white font-bold mb-6">
             RGB Maker
           </h1>
-          <div
-            className="
-              flex 
-              sm:flex-row flex-col
-              items-center
-              text-white 
-              py-3 px-6 
-              rounded-md
-              mb-6
-              bg-[#44474E]"
-          >
-            <MdColorLens size={25} className="sm:mr-2 sm:mb-0 mb-2" />
-            <p className="text-lg font-medium">26/08/2022 - 23:59</p>
-          </div>
+          <CurrentDate />
           <RGBAGenerator />
         </Wrapper>
       </main>
@@ -55,7 +47,7 @@ const Home: NextPage = () => {
       <footer className="bg-[#44474E] px-2 py-16">
         <Wrapper>
           <p className="text-center text-white text-lg font-medium">
-            &copy; 2020 Guilherme Leandro Rolim
+            &copy; {getFullYear()} Guilherme Leandro Rolim
           </p>
         </Wrapper>
       </footer>
