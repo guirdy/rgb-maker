@@ -2,7 +2,6 @@
 import { FunctionComponent, useState } from 'react';
 
 // Libs
-import { IoMdColorFilter } from 'react-icons/io';
 import { MdFileCopy } from 'react-icons/md';
 import { notify } from '../utils/notify';
 
