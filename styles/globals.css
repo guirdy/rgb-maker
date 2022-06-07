@@ -19,3 +19,19 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.black-hole {
+  animation: spin 14s linear infinite;
+  -webkit-animation: spin 14s linear infinite;
+  border: 9px solid #D15C04;
+  border-top-color: #ce8807;
+  border-top-width: 20px;
+  filter: blur(4px) drop-shadow(2px -27px 46px #D15C04)
+}
+
+@keyframes spin {
+  to { -webkit-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+  to { -webkit-transform: rotate(360deg); }
+}

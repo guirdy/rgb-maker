@@ -1,4 +1,5 @@
 // React
+import classNames from 'classnames';
 import { FunctionComponent, useState } from 'react';
 
 // Libs
@@ -87,12 +88,24 @@ export const RGBAGenerator: FunctionComponent = () => {
           </div>
         </div>
 
-        <div
-          className="my-10 sm:p-24 p-16 rounded-full"
+        {/* Star */}
+        <span
+          className={classNames(
+            "relative my-16 sm:p-24 p-16 rounded-full",
+            red === 0 && green === 0 && blue === 0 && opacity === 100 ? "black-hole" : "")}
           style={{
             backgroundColor: `rgba(${red}, ${green}, ${blue}, ${opacity / 100})`,
           }}
-        />
+        >
+          <span
+            className={classNames(
+              "absolute rounded-full -top-3 -left-4",
+              red === 0 && green === 0 && blue === 0 && opacity === 100 ? "" : "blur-xl shadow-xl animate-pulse sm:p-28 p-20")}
+            style={{
+              backgroundColor: `rgba(${red}, ${green}, ${blue}, ${opacity / 100})`,
+            }}
+          />
+        </span>
 
         <div
           className="
