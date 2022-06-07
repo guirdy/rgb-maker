@@ -12,7 +12,7 @@ import classNames from 'classnames';
 import { Wrapper } from '../components/Wrapper';
 import { RGBAGenerator } from '../components/RGBAGenerator';
 import { CurrentDate } from '../components/CurrentDate';
-import { getFullYear } from '../utils/format';
+import { getCurrentHour, getFullYear } from '../utils/format';
 
 const Home: NextPage = () => {
   return (
@@ -31,7 +31,7 @@ const Home: NextPage = () => {
           min-h-screen 
           px-2 sm:py-10 py-16"
         style={{
-          background: "url(galaxy-2.jpg) no-repeat",
+          background: `${getCurrentHour() >= 18 ? "url(galaxy.jpg) no-repeat" : "url(galaxy-2.jpg) no-repeat"}`,
           backgroundSize: "cover",
         }}
       >
@@ -44,7 +44,7 @@ const Home: NextPage = () => {
         </Wrapper>
       </main>
 
-      <footer className="bg-[#44474E] px-2 py-16">
+      <footer className="bg-black px-2 py-16">
         <Wrapper>
           <p className="text-center text-white text-lg font-medium">
             &copy; {getFullYear()} Guilherme Leandro Rolim
