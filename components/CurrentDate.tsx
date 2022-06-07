@@ -1,6 +1,7 @@
 import { FunctionComponent, useEffect } from 'react'
 import { MdColorLens } from 'react-icons/md'
 import { getDateWithHour } from '../utils/format'
+import { Card } from './Card'
 
 export const CurrentDate: FunctionComponent = () => {
 
@@ -10,20 +11,10 @@ export const CurrentDate: FunctionComponent = () => {
 
   return (
     <>
-      <div
-        className="
-          flex 
-          sm:flex-row flex-col
-          items-center
-          text-white 
-          py-3 px-6 
-          rounded-md
-          mb-6
-          bg-[#44474E]"
-      >
+      <Card className="sm:flex-row mb-6 py-3 px-6">
         <MdColorLens size={25} className="sm:mr-2 sm:mb-0 mb-2" />
         <p id="date" className="text-lg font-medium"></p>
-      </div>
+      </Card>
     </>
   )
 }

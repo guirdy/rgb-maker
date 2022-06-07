@@ -31,7 +31,7 @@ const Home: NextPage = () => {
           min-h-screen 
           px-2 sm:py-10 py-16"
         style={{
-          background: "url(galaxy.jpg) no-repeat",
+          background: "url(galaxy-2.jpg) no-repeat",
           backgroundSize: "cover",
         }}
       >

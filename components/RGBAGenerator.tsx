@@ -5,11 +5,12 @@ import { FunctionComponent, useState } from 'react';
 // Libs
 import { MdFileCopy } from 'react-icons/md';
 import { notify } from '../utils/notify';
+import { Card } from './Card';
 
 export const RGBAGenerator: FunctionComponent = () => {
-  const [red, setRed] = useState(127);
-  const [green, setGreen] = useState(127);
-  const [blue, setBlue] = useState(127);
+  const [red, setRed] = useState(122);
+  const [green, setGreen] = useState(255);
+  const [blue, setBlue] = useState(255);
   const [opacity, setOpacity] = useState(100);
 
   const copyColor = () => {
@@ -20,17 +21,7 @@ export const RGBAGenerator: FunctionComponent = () => {
 
   return (
     <>
-      <div
-        className="
-          flex 
-          flex-col
-          items-center
-          text-white 
-          py-12 px-6 
-          rounded-md
-          mb-6
-          bg-[#44474E]"
-      >
+    <Card className="mb-6 py-12 px-6">
         <div
           className="
             flex flex-wrap
@@ -109,7 +100,7 @@ export const RGBAGenerator: FunctionComponent = () => {
 
         <div
           className="
-            flex sm:flex-row flex-col 
+            flex
             justify-center items-center 
             text-lg font-medium
             py-2 px-4 
@@ -128,7 +119,7 @@ export const RGBAGenerator: FunctionComponent = () => {
         <div
           className="
             p-2 mt-6
-            bg-black bg-opacity-10
+            bg-white bg-opacity-20
             rounded-md"
         >
           <input
@@ -140,7 +131,7 @@ export const RGBAGenerator: FunctionComponent = () => {
             onChange={(e) => setOpacity(Number((e.target as HTMLInputElement).value))}
           />
         </div>
-      </div>
+      </Card>
     </>
   )
 }
