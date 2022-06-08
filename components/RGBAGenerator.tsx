@@ -13,7 +13,7 @@ export const RGBAGenerator: FunctionComponent = () => {
   const [green, setGreen] = useState(255);
   const [blue, setBlue] = useState(255);
   const [opacity, setOpacity] = useState(100);
-  const [hex, setHex] = useState("");
+  const [hex, setHex] = useState("#7affff");
 
   const copyColor = () => {
     const color = `rgba(${red}, ${green}, ${blue}, ${opacity / 100})`;
@@ -29,7 +29,7 @@ export const RGBAGenerator: FunctionComponent = () => {
 
   return (
     <>
-    <Card className="mb-6 py-12 px-6">
+      <Card className="mb-6 py-12 px-6">
         <div
           className="
             flex flex-wrap
@@ -52,7 +52,7 @@ export const RGBAGenerator: FunctionComponent = () => {
               className="cursor-pointer"
               onChange={(e: ChangeEvent<HTMLInputElement>) => {
                 setRed(Number(e.target.value));
-                setHex(`${RGBToHex(red, green, blue)}`);
+                setHex(RGBToHex(red, green, blue));
               }}
             />
           </div>
@@ -71,7 +71,7 @@ export const RGBAGenerator: FunctionComponent = () => {
               className="cursor-pointer"
               onChange={(e: ChangeEvent<HTMLInputElement>) => {
                 setGreen(Number(e.target.value));
-                setHex(`${RGBToHex(red, green, blue)}`);
+                setHex(RGBToHex(red, green, blue));
               }}
             />
           </div>
@@ -90,7 +90,7 @@ export const RGBAGenerator: FunctionComponent = () => {
               className="cursor-pointer"
               onChange={(e: ChangeEvent<HTMLInputElement>) => {
                 setBlue(Number(e.target.value));
-                setHex(`${RGBToHex(red, green, blue)}`);
+                setHex(RGBToHex(red, green, blue));
               }}
             />
           </div>
@@ -120,7 +120,7 @@ export const RGBAGenerator: FunctionComponent = () => {
           className="
             flex
             justify-center items-center 
-            text-lg font-medium
+            text-md font-medium
             py-2 px-4 mb-4
             bg-gray-800 hover:bg-gray-900
             transition-all
@@ -138,7 +138,7 @@ export const RGBAGenerator: FunctionComponent = () => {
           className="
             flex
             justify-center items-center 
-            text-lg font-medium
+            text-md font-medium
             py-2 px-4 
             bg-gray-800 hover:bg-gray-900
             transition-all
