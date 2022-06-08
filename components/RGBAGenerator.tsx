@@ -1,6 +1,6 @@
 // React
 import classNames from 'classnames';
-import { FunctionComponent, useState } from 'react';
+import { ChangeEvent, FunctionComponent, useState } from 'react';
 
 // Libs
 import { MdFileCopy } from 'react-icons/md';
@@ -42,7 +42,7 @@ export const RGBAGenerator: FunctionComponent = () => {
               min="0" max="255"
               value={red}
               className="cursor-pointer"
-              onChange={(e) => setRed(Number((e.target as HTMLInputElement).value))}
+              onChange={(e: ChangeEvent<HTMLInputElement>) => setRed(Number(e.target.value))}
             />
           </div>
           {/* Green bar */}
@@ -58,7 +58,7 @@ export const RGBAGenerator: FunctionComponent = () => {
               min="0" max="255"
               value={green}
               className="cursor-pointer"
-              onChange={(e) => setGreen(Number((e.target as HTMLInputElement).value))}
+              onChange={(e: ChangeEvent<HTMLInputElement>) => setGreen(Number(e.target.value))}
             />
           </div>
           {/* Blue bar */}
@@ -74,7 +74,7 @@ export const RGBAGenerator: FunctionComponent = () => {
               min="0" max="255"
               value={blue}
               className="cursor-pointer"
-              onChange={(e) => setBlue(Number((e.target as HTMLInputElement).value))}
+              onChange={(e: ChangeEvent<HTMLInputElement>) => setBlue(Number(e.target.value))}
             />
           </div>
         </div>
@@ -128,7 +128,7 @@ export const RGBAGenerator: FunctionComponent = () => {
             min="0" max="100"
             value={opacity}
             className="cursor-pointer"
-            onChange={(e) => setOpacity(Number((e.target as HTMLInputElement).value))}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => setOpacity(Number(e.target.value))}
           />
         </div>
       </Card>

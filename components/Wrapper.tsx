@@ -1,4 +1,4 @@
-import { FunctionComponent, ReactNode } from 'react'
+import { ReactNode } from 'react'
 import classNames from 'classnames';
 
 type WrapperProps = {
@@ -6,11 +6,11 @@ type WrapperProps = {
   className?: string,
 }
 
-export const Wrapper: FunctionComponent<WrapperProps> = ({ children, className }: WrapperProps) => {
+export const Wrapper = ({ children, className }: WrapperProps) => {
   return (
     <div className={classNames(
       "flex flex-col mx-auto w-full max-w-3xl",
-      className ? className : ''
+      className ? className : ""
     )}>
       {children}
     </div>
