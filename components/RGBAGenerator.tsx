@@ -4,6 +4,7 @@ import { ChangeEvent, FunctionComponent, useState } from 'react';
 
 // Libs
 import { MdFileCopy } from 'react-icons/md';
+import { RGBToHex } from '../utils/format';
 import { notify } from '../utils/notify';
 import { Card } from './Card';
 
@@ -12,9 +13,16 @@ export const RGBAGenerator: FunctionComponent = () => {
   const [green, setGreen] = useState(255);
   const [blue, setBlue] = useState(255);
   const [opacity, setOpacity] = useState(100);
+  const [hex, setHex] = useState("");
 
   const copyColor = () => {
     const color = `rgba(${red}, ${green}, ${blue}, ${opacity / 100})`;
+    window.navigator['clipboard'].writeText(color);
+    notify("Copied to clipboard!", "success");
+  }
+
+  const copyHex = () => {
+    const color = hex;
     window.navigator['clipboard'].writeText(color);
     notify("Copied to clipboard!", "success");
   }
@@ -42,7 +50,10 @@ export const RGBAGenerator: FunctionComponent = () => {
               min="0" max="255"
               value={red}
               className="cursor-pointer"
-              onChange={(e: ChangeEvent<HTMLInputElement>) => setRed(Number(e.target.value))}
+              onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                setRed(Number(e.target.value));
+                setHex(`${RGBToHex(red, green, blue)}`);
+              }}
             />
           </div>
           {/* Green bar */}
@@ -58,7 +69,10 @@ export const RGBAGenerator: FunctionComponent = () => {
               min="0" max="255"
               value={green}
               className="cursor-pointer"
-              onChange={(e: ChangeEvent<HTMLInputElement>) => setGreen(Number(e.target.value))}
+              onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                setGreen(Number(e.target.value));
+                setHex(`${RGBToHex(red, green, blue)}`);
+              }}
             />
           </div>
           {/* Blue bar */}
@@ -74,7 +88,10 @@ export const RGBAGenerator: FunctionComponent = () => {
               min="0" max="255"
               value={blue}
               className="cursor-pointer"
-              onChange={(e: ChangeEvent<HTMLInputElement>) => setBlue(Number(e.target.value))}
+              onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                setBlue(Number(e.target.value));
+                setHex(`${RGBToHex(red, green, blue)}`);
+              }}
             />
           </div>
         </div>
@@ -98,6 +115,25 @@ export const RGBAGenerator: FunctionComponent = () => {
           />
         </span>
 
+        {/* Hex copy button */}
+        <div
+          className="
+            flex
+            justify-center items-center 
+            text-lg font-medium
+            py-2 px-4 mb-4
+            bg-gray-800 hover:bg-gray-900
+            transition-all
+            rounded-md cursor-pointer"
+          onClick={copyHex}
+        >
+          <p>
+            {hex}
+          </p>
+          <MdFileCopy className="ml-3" />
+        </div>
+
+        {/* RGBA copy button */}
         <div
           className="
             flex
