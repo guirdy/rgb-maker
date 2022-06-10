@@ -31,7 +31,7 @@ const Home: NextPage = () => {
           min-h-screen 
           px-2 sm:py-10 py-16"
         style={{
-          background: `${getCurrentHour() >= 18 ? "url(galaxy.jpg) no-repeat" : "url(galaxy-2.jpg) no-repeat"}`,
+          background: `${getCurrentHour() < 18 ? "url(galaxy.jpg) no-repeat" : "url(galaxy-2.jpg) no-repeat"}`,
           backgroundSize: "cover",
         }}
       >
